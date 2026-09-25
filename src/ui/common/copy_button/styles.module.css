@@ -1,0 +1,37 @@
+.row {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.row code {
+  min-width: 0;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--bg);
+  font: 14px var(--serif);
+  word-break: break-word;
+  user-select: all;
+}
+
+.singleLine {
+  flex-wrap: nowrap;
+}
+.singleLine code {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: normal;
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.5;
+}
+.singleLine button {
+  flex: none;
+  white-space: nowrap;
+  font-weight: 400;
+}

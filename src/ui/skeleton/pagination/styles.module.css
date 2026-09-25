@@ -1,0 +1,33 @@
+.step-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink);
+}
+.step-nav button {
+  border: 0.5px solid var(--ink);
+}
+.step-nav button:last-child {
+  margin-left: auto;
+}
+.step-nav button[type='submit'] {
+  min-width: 180px;
+}
+.step-error {
+  color: var(--error);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 16px;
+}
+.step-error:empty {
+  display: none;
+}
+@media (max-width: 700px) {
+  .step-nav button[type='submit'] {
+    flex: 1;
+  }
+}

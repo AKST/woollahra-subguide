@@ -1,0 +1,15 @@
+.row {
+  display: grid;
+  align-items: start;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 560px) {
+  .row.two {
+    grid-template-columns: 1fr 1fr;
+  }
+  .row.title-name {
+    grid-template-columns: 110px 1fr;
+  }
+}

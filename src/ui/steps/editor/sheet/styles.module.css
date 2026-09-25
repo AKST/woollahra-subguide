@@ -1,0 +1,38 @@
+/*
+ * One page of the form. Answers are positioned in PDF points: --x, --y, --w, --h
+ * (and --size for text) are set by component.tsx, and --k converts points to pixels.
+ */
+.sheet {
+  --k: 1;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 595.56 / 842.04;
+  border-radius: 2px;
+  background: #ffffff center / 100% 100% no-repeat;
+  box-shadow: var(--sheet-shadow);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sheet-label {
+  position: absolute;
+  top: -2px;
+  right: 8px;
+  transform: translateY(-100%);
+  color: var(--muted);
+  font: 500 11px var(--serif);
+}
+
+.target-box {
+  position: absolute;
+  left: calc(var(--x) * var(--k) * 1px);
+  top: calc(var(--y) * var(--k) * 1px);
+}
+
+.target-box {
+  width: calc(var(--w) * var(--k) * 1px);
+  height: calc(var(--h) * var(--k) * 1px);
+  outline: 1.5px dashed var(--accent);
+  background: rgba(255, 90, 0, 0.1);
+  pointer-events: none;
+}

@@ -1,0 +1,131 @@
+.progress {
+  display: grid;
+  min-width: 0;
+  position: sticky;
+  top: 24px;
+}
+.registration {
+  min-width: 0;
+}
+.progress .registration ol {
+  margin-left: 14px;
+}
+.progress ol {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.progress li {
+  border-top: 1px solid var(--line);
+}
+.progress li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.progress .link {
+  --button-shadow: none;
+  --button-shadow-hover: none;
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 6px;
+  width: 100%;
+  min-height: 64px;
+  padding: 16px 0;
+  border: 0;
+  border-right: 4px solid transparent;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.number {
+  font-family: var(--sans);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+.progress .current .link {
+  font-weight: 700;
+  border-right-color: var(--accent);
+}
+.progress .registration .current .link {
+  background: var(--ink);
+  color: var(--accent);
+}
+.progress li:not(.current) .link:hover .label {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.progress .link[aria-disabled='true'] {
+  cursor: wait;
+  opacity: 0.5;
+}
+@media (min-width: 701px) {
+  .registration li {
+    background: var(--accent);
+    border-color: var(--ink);
+  }
+  .registration li:last-child {
+    border-bottom-color: var(--ink);
+  }
+  .registration .link {
+    padding-left: 16px;
+  }
+}
+@media (max-width: 700px) {
+  .progress {
+    position: static;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 4fr);
+    gap: 6px;
+    align-items: end;
+  }
+  .progress ol {
+    grid-template-columns: 1fr;
+  }
+  .progress .registration ol {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-left: 0;
+    background: var(--accent);
+  }
+  .progress li,
+  .progress li:last-child {
+    border: 0;
+  }
+  .progress .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 6px 0;
+    border-right: 0;
+    border-bottom: 4px solid transparent;
+  }
+  .progress .label {
+    display: none;
+  }
+  .number {
+    font-size: 17px;
+  }
+  .progress .registration .link {
+    color: var(--ink);
+  }
+  .progress .current .link {
+    border-bottom-color: var(--accent);
+  }
+  .before .link {
+    color: var(--muted);
+  }
+}
+
+.label {
+  font-family: var(--serif);
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+}

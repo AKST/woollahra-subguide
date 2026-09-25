@@ -1,0 +1,27 @@
+.root {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+.root p {
+  margin: 0;
+}
+.copy, .reminder {
+  font-family: var(--serif);
+}
+.reminder {
+  color: var(--accent);
+  font-weight: 700;
+}
+.copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}

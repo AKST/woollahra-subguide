@@ -1,0 +1,25 @@
+.root {
+  display: grid;
+  gap: 18px;
+}
+.sheets-scroll {
+  overflow: auto;
+  border-radius: 0;
+}
+
+.sheets {
+  display: grid;
+  gap: 26px;
+  width: 100%;
+  padding: 20px 2px 2px;
+}
+
+.sheets.zoomed {
+  width: 200%;
+}
+
+@media (min-width: 900px) {
+  .sheets.zoomed {
+    width: 150%;
+  }
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Woollahra startup check</title>
+  </head>
+  <body>
+    <aside style="position:fixed;inset:8px 8px auto;z-index:1000;max-height:45dvh;overflow:auto;padding:16px;background:#fff;color:#111;border:2px solid #ff5a00;font:14px/1.5 system-ui">
+      <strong>Startup check</strong>
+      <pre id="diagnostics" style="white-space:pre-wrap;overflow-wrap:anywhere">HTML loaded. Waiting for JavaScript…</pre>
+      <noscript>JavaScript is disabled in this browser.</noscript>
+    </aside>
+    <div id="root"></div>
+    <script>
+      (function () {
+        var output = document.getElementById('diagnostics');
+        output.textContent = 'JavaScript is running.\n' + navigator.userAgent + '\n';
+        function report(message) {
+          output.textContent += '\n' + message;
+        }
+        window.addEventListener('error', function (event) {
+          if (event.message) {
+            report('ERROR: ' + event.message + '\n' + (event.filename || '') + ':' + event.lineno);
+          } else if (event.target && (event.target.src || event.target.href)) {
+            report('Resource failed: ' + (event.target.src || event.target.href));
+          }
+        }, true);
+        window.addEventListener('unhandledrejection', function (event) {
+          report('PROMISE ERROR: ' + String(event.reason));
+        });
+        report('Popover API: ' + ('showPopover' in HTMLElement.prototype));
+        report('ResizeObserver: ' + (typeof ResizeObserver !== 'undefined'));
+        report('Secure context: ' + window.isSecureContext);
+        var started = false;
+        var observer = new MutationObserver(function () {
+          if (!started && document.querySelector('#root section[data-step]')) {
+            started = true;
+            report('SUCCESS: the app rendered.');
+            observer.disconnect();
+          }
+        });
+        observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+        fetch('./?startup-check=' + Date.now(), { cache: 'no-store' })
+          .then(function (response) {
+            report('Page HTTP status: ' + response.status);
+            if (!response.ok) throw new Error('Could not load the page HTML.');
+            return response.text();
+          })
+          .then(function (html) {
+            var page = new DOMParser().parseFromString(html, 'text/html');
+            var entry = page.querySelector('script[type="module"][src]');
+            if (!entry) throw new Error('No app module found in the deployed HTML.');
+            page.querySelectorAll('link[rel="stylesheet"]').forEach(function (source) {
+              var link = document.createElement('link');
+              link.rel = 'stylesheet';
+              link.href = new URL(source.getAttribute('href'), location.href).href;
+              document.head.appendChild(link);
+            });
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.crossOrigin = 'anonymous';
+            script.src = new URL(entry.getAttribute('src'), location.href).href;
+            report('Loading app: ' + script.src);
+            script.onload = function () { report('App module load event received.'); };
+            script.onerror = function () { report('App module failed to load. Check the error above.'); };
+            document.head.appendChild(script);
+            setTimeout(function () {
+              if (!started) report('The app has not rendered after 10 seconds.');
+            }, 10000);
+          })
+          .catch(function (error) { report('Startup check failed: ' + error.message); });
+      })();
+    </script>
+  </body>
+</html>

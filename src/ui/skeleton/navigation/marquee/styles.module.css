@@ -1,0 +1,60 @@
+.root {
+  overflow: hidden;
+  border-top: 4px solid var(--ink);
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.5;
+  animation: blink 0.25s steps(1, end) infinite;
+}
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 3s linear infinite;
+}
+.copy {
+  display: flex;
+  flex-shrink: 0;
+}
+.phrase {
+  padding-inline: 16px;
+  white-space: nowrap;
+}
+.root:hover,
+.root:hover .track {
+  animation-play-state: paused;
+}
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    background: var(--accent);
+    color: var(--ink);
+  }
+  50% {
+    background: var(--ink);
+    color: var(--accent);
+  }
+}
+@media (min-width: 701px) {
+  .root {
+    border-top: 0;
+  }
+  :global([data-reduced-motion='true']) .copy:not(:first-child),
+  :global([data-reduced-motion='true']) .phrase:not(:first-child) {
+    display: none;
+  }
+}
+@media (min-width: 701px) and (prefers-reduced-motion: reduce) {
+  .copy:not(:first-child),
+  .phrase:not(:first-child) {
+    display: none;
+  }
+}

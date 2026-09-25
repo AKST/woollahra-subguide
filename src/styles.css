@@ -1,0 +1,128 @@
+/* Shared design tokens and document defaults. Component rules live in CSS Modules. */
+:root {
+  --bg: light-dark(#f7f6f2, #151515);
+  --surface: light-dark(#f7f6f2, #202020);
+  --ink: light-dark(#151515, #f7f6f2);
+  --muted: light-dark(#60605b, #bcbab3);
+  --line: light-dark(#bcbab3, #555550);
+  --control-line: light-dark(#7d7b75, #92918b);
+  --field: transparent;
+  --accent: light-dark(#ff5a00, #ff8a24);
+  --accent-ink: #151515;
+  --control-accent: var(--accent);
+  --title-blend: multiply;
+  --title-cyan: #00cfff;
+  --title-magenta: #ff0099;
+  --title-yellow: #ffe600;
+  --accent-soft: light-dark(#fff0e5, #382416);
+  --warn: light-dark(#873b12, #ffb781);
+  --warn-bg: light-dark(#fff0e5, #382416);
+  --error: light-dark(#a11d2b, #ff8996);
+  --pen: #10183a; /* PDF ink stays independent of the interface palette. */
+  --sheet-shadow: 0 1px 8px light-dark(#15151512, #0006);
+  --button-shadow: 4px 4px color-mix(in srgb, var(--accent) 25%, transparent);
+  --button-shadow-hover: 4px 4px color-mix(in srgb, var(--accent) 40%, transparent);
+  --sans: 'Helvetica Neue', Helvetica, 'Inter', sans-serif;
+  --serif: Charter, 'Times New Roman', Times, serif;
+  color-scheme: only light;
+}
+
+:root[data-accent-theme='true'] {
+  --bg: #ff5a00;
+  --accent: #f7f6f2;
+  --field: #f7f6f2;
+  --ink: #000;
+  --muted: #000;
+  --line: #000;
+  --control-line: #000;
+  --error: #000;
+  --warn: #000;
+  --control-accent: #000;
+  --button-shadow: 4px 4px #000;
+  --button-shadow-hover: 4px 4px #000;
+  --title-blend: screen;
+  --title-cyan: #ff0000;
+  --title-magenta: #00ff00;
+  --title-yellow: #0000ff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  min-height: 100dvh;
+  margin: 0;
+  padding: 24px 32px;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 var(--sans);
+}
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+a {
+  color: var(--accent);
+}
+button {
+  box-shadow: var(--button-shadow);
+}
+button:hover:not(:disabled) {
+  box-shadow: var(--button-shadow-hover);
+}
+@media (max-width: 700px) {
+  body {
+    padding: 26px 20px 36px;
+  }
+}
+
+@media (min-width: 701px) {
+  body {
+    overflow: hidden;
+  }
+}
+
+/* The URL override only enables reduced motion; it never overrides a system request. */
+:root[data-reduced-motion='true'] {
+  --motion-transition: none;
+  --motion-layer-display: none;
+  --motion-label-visibility: visible;
+  --motion-label-display: none;
+  --motion-place-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-transition: none;
+    --motion-layer-display: none;
+    --motion-label-visibility: visible;
+    --motion-label-display: none;
+    --motion-place-color: var(--accent);
+  }
+}
+
+:root[data-reduced-motion='true'] *,
+:root[data-reduced-motion='true'] *::before,
+:root[data-reduced-motion='true'] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

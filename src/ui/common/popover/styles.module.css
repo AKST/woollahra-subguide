@@ -1,0 +1,46 @@
+.trigger {
+  display: inline;
+  --button-shadow: none;
+  --button-shadow-hover: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.trigger:hover,
+.trigger[aria-expanded='true'] {
+  text-decoration-color: var(--accent);
+}
+.trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.panel {
+  display: none;
+  position: fixed;
+  inset: auto;
+  box-sizing: border-box;
+  width: min(340px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+  font: 400 14px/1.5 var(--sans);
+  text-align: left;
+}
+.panel:popover-open {
+  display: block;
+}
+.panel a {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.2em;
+}

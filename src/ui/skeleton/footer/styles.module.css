@@ -1,0 +1,40 @@
+.site-footer {
+  min-width: 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--ink);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.site-footer p {
+  margin: 0;
+}
+.privacyParagraph {
+  display: block;
+}
+.privacyParagraph + .privacyParagraph {
+  margin-top: 0.75em;
+}
+.site-footer b {
+  color: var(--ink);
+}
+.site-footer a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+.credits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 20px;
+  margin-top: 9px;
+}
+@media (max-width: 700px) {
+  .site-footer {
+    padding-top: 20px;
+  }
+  .credits {
+    gap: 12px;
+    margin-top: 12px;
+  }
+}

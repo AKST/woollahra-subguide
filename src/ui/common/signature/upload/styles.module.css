@@ -1,0 +1,53 @@
+.root {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.root input {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.preview {
+  display: grid;
+  place-items: center;
+  height: 170px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: repeating-conic-gradient(#e4e4e4 0% 25%, #fff 0% 50%) 0 0 / 16px 16px;
+}
+
+.preview img {
+  max-width: 100%;
+  max-height: 144px;
+  object-fit: contain;
+}
+
+.error {
+  margin: 0;
+  color: var(--error);
+}
+
+.error:empty {
+  display: none;
+}
+
+.clear {
+  justify-self: start;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}

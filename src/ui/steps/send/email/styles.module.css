@@ -1,0 +1,42 @@
+.root {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+.root p {
+  margin: 0;
+}
+.copy {
+  font-family: var(--serif);
+}
+.note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+.reminder {
+  color: var(--accent);
+  font-family: var(--serif);
+  line-height: 1.5;
+}
+.reminder strong {
+  font-weight: 700;
+}
+.preview {
+  min-width: 0;
+  border-block: 1px solid var(--line);
+  padding: 12px 0;
+  overflow-wrap: anywhere;
+}
+.preview summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.preview[open] summary,
+.preview p {
+  margin-bottom: 10px;
+}
+.root .preview code {
+  white-space: pre-wrap;
+  font-family: var(--sans);
+}

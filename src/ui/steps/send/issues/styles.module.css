@@ -1,0 +1,52 @@
+.issues {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
+  border-radius: 0;
+  background: var(--warn-bg);
+}
+
+.issues-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.issues ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.issues li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid color-mix(in srgb, var(--warn) 25%, transparent);
+}
+
+.issues li div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  font-size: 14.5px;
+}
+
+.issues li span {
+  color: var(--muted);
+}
+
+.issues button {
+  flex: none;
+}
+
+.note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}

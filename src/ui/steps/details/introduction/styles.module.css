@@ -1,0 +1,27 @@
+.introduction {
+  container-type: inline-size;
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+.introduction h2 {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(32px, 6cqi, 64px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+.introduction h2:focus {
+  outline: none;
+}
+.introduction p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.8cqi, 24px);
+  line-height: 1.5;
+}
+.question {
+  color: var(--accent);
+}

@@ -1,0 +1,13 @@
+.root {
+  display: grid;
+  gap: 22px;
+  border-top: 1px solid var(--line);
+  margin-top: 4px;
+  padding-top: 24px;
+}
+.root h3 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
