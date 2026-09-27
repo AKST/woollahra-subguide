@@ -1,0 +1,30 @@
+.frame {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: 0.5px solid var(--ink);
+  background: transparent;
+  appearance: none;
+  box-shadow: none;
+}
+button.frame {
+  cursor: pointer;
+}
+.frame:hover:not(:disabled) {
+  box-shadow: none;
+}
+.original {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  pointer-events: none;
+}

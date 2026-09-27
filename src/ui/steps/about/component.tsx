@@ -3,7 +3,6 @@ import { Popover } from '@ui/common/popover/component';
 import { Button } from '@ui/common/button/component';
 import styles from './styles.module.css';
 import type { ComponentType } from 'react';
-import shouldWeImage from '../../../assets/images/should-we.webp';
 
 const links = {
   smh2025JulWoollahraStation:
@@ -38,11 +37,13 @@ export function About({
   active,
   onSignUp,
   Calendar,
+  ArticleImage,
   enableWhyThisIsImportant,
 }: {
   active: boolean;
   onSignUp: () => void;
   Calendar: ComponentType;
+  ArticleImage: ComponentType;
   enableWhyThisIsImportant: boolean;
 }) {
   return (
@@ -336,15 +337,7 @@ export function About({
         considered.
       </p>
       <figure>
-        <img
-          className={styles.articleImage}
-          src={shouldWeImage}
-          width={889}
-          height={807}
-          alt="Photo caption: Peter Bloomfield staunchly opposes the proposed station. Photograph by Jessica Hromas. Quote: “I don’t see what good it would do to have a station there. I don’t see any benefits.”"
-          loading="lazy"
-          decoding="async"
-        />
+        <ArticleImage />
         <figcaption className={styles.articleCaption}>
           Read here <a href={links.smh2025JulWoollahraStation} target="_blank" rel="noopener noreferrer">in the SMH (July 2025)</a>.
         </figcaption>

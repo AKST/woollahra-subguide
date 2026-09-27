@@ -25,6 +25,7 @@ const { Steps, controller } = createSteps({
   enableDeetsAnimation: config.enableDeetsAnimation,
   reducedMotion,
   enableWhyThisIsImportant: config.enableWhyThisIsImportant,
+  articleImageVariant: config.aboutImageVariant,
   calendar: { ...config.exhibition, councilDate: config.prefill.meetingDate },
   browser: createBrowserService(),
   pdf: createPdfService(FORM.file),

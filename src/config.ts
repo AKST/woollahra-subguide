@@ -13,6 +13,7 @@ import type { Answers } from '@common/form/types';
  * A link like `?item=…&date=2026-10-14&stance=support&mode=person` overrides these values.
  */
 export default {
+  aboutImageVariant: 'p40', // 'original', 'p40', or 'p60'.
   enableDeetsAnimation: true, // False keeps plain "Your Deets" without the question mark or scramble.
   enableEmailInitialCopy: false, // Set true to prefill a random email message and show its preview.
   enableWhyThisIsImportant: true, // Show the "Why is this Important?" section on About.
@@ -28,6 +29,7 @@ export default {
     mode: '', // No default; people choose 'zoom' or 'person'.
   },
 } satisfies {
+  aboutImageVariant: 'original' | 'p40' | 'p60';
   enableDeetsAnimation: boolean;
   enableEmailInitialCopy: boolean;
   enableWhyThisIsImportant: boolean;

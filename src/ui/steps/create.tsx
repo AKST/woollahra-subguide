@@ -8,6 +8,7 @@ import type { Answers, Issue } from '@common/form/types';
 import { StepsStore, StepsPresenter, type StepsDependencies } from './presenter';
 import { createStepsController } from './controller';
 import { createDeetsLabel } from '@ui/common/deets_label/create';
+import type { ArticleImageVariant } from './about/article_image/component';
 import { createAbout } from './about/create';
 import type { CalendarDates } from './about/calendar/types';
 import { createDetailsStep } from './details/create';
@@ -24,6 +25,7 @@ export function createSteps({
   enableDeetsAnimation,
   reducedMotion,
   enableWhyThisIsImportant,
+  articleImageVariant,
   calendar,
   pdf,
   browser,
@@ -35,6 +37,7 @@ export function createSteps({
   enableDeetsAnimation: boolean;
   reducedMotion: boolean;
   enableWhyThisIsImportant: boolean;
+  articleImageVariant: ArticleImageVariant;
   calendar: CalendarDates;
 }) {
   const store = new StepsStore(answers, assistedStance, enableEmailInitialCopy);
@@ -50,6 +53,7 @@ export function createSteps({
   const DetailsLabel = createDeetsLabel({ enabled: enableDeetsAnimation, reducedMotion });
   const controller = createStepsController(store, presenter, DetailsLabel);
   const About = createAbout({
+    articleImageVariant,
     calendar,
     enableWhyThisIsImportant,
     onSignUp: () => {
